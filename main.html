@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Portfolio de Jean Mario Paredes Lazaro, QA Tester Junior orientado a testing funcional, pruebas web y calidad de software." />
+  <meta name="theme-color" content="#09090b" />
+  <meta name="color-scheme" content="dark" />
+<title>Jean Mario Paredes Lazaro | QA Tester</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<style>
+  body { font-family: 'IBM Plex Sans', sans-serif; }
+  .font-display { font-family: 'Space Grotesk', sans-serif; }
+
+  @keyframes fadeSlideIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .tab-panel { animation: fadeSlideIn 0.4s ease both; }
+
+  @keyframes growLine {
+    from { transform: scaleX(0); }
+    to { transform: scaleX(1); }
+  }
+  .tab-underline { animation: growLine 0.3s ease both; transform-origin: left; }
+
+  @keyframes driftSlow {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(30px, 40px); }
+  }
+  @keyframes driftSlowReverse {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(-40px, -20px); }
+  }
+  .drift-slow { animation: driftSlow 14s ease-in-out infinite; }
+  .drift-slow-reverse { animation: driftSlowReverse 16s ease-in-out infinite; }
+
+  @keyframes pulseDot {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.35; }
+  }
+  .status-dot { animation: pulseDot 2s ease-in-out infinite; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .tab-panel, .tab-underline, .drift-slow, .drift-slow-reverse, .status-dot {
+      animation: none !important;
+    }
+  }
+
+  html { scroll-behavior: smooth; }
+  body { min-width: 320px; }
+  ::selection { background: rgba(52, 211, 153, .25); }
+  button, a { -webkit-tap-highlight-color: transparent; }
+  .glass-line { background: linear-gradient(90deg, transparent, rgba(52,211,153,.45), transparent); }
+  .hero-kicker { letter-spacing: .16em; }
+  .project-card { position: relative; overflow: hidden; }
+  .project-card::before {
+    content: "";
+    position: absolute;
+    inset: 0 auto auto 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(52,211,153,.7), transparent 70%);
+    opacity: .7;
+  }
+  .skill-card:hover .skill-icon { transform: scale(1.08); }
+  .skill-icon { transition: transform .25s ease; }
+  @media (max-width: 640px) {
+    #tabs { overflow-x: auto; flex-wrap: nowrap; scrollbar-width: none; }
+    #tabs::-webkit-scrollbar { display: none; }
+    .tab-btn { white-space: nowrap; }
+  }
+
+</style>
+</head>
+<body class="relative min-h-screen overflow-x-hidden bg-zinc-950 text-zinc-200 selection:bg-emerald-400/30 selection:text-white">
+
+  <canvas id="bg-canvas" class="pointer-events-none fixed inset-0 h-full w-full"></canvas>
+  <div class="drift-slow pointer-events-none fixed -left-32 top-0 h-96 w-96 rounded-full bg-emerald-500/10 blur-3xl"></div>
+  <div class="drift-slow-reverse pointer-events-none fixed -right-32 bottom-0 h-[28rem] w-[28rem] rounded-full bg-rose-500/10 blur-3xl"></div>
+
+  <div id="app" class="relative z-10 mx-auto flex min-h-screen w-full max-w-7xl flex-col gap-5 px-4 py-5 opacity-0 translate-y-3 transition-all duration-700 ease-out sm:px-6 sm:py-8 lg:flex-row lg:gap-6 lg:px-8 lg:py-10">
+
+    <!-- Sidebar -->
+    <aside class="relative flex shrink-0 flex-col gap-7 overflow-hidden rounded-2xl border border-white/10 bg-zinc-900/60 px-6 py-7 shadow-2xl shadow-black/20 backdrop-blur-xl sm:px-8 sm:py-8 lg:sticky lg:top-8 lg:h-fit lg:w-80">
+      <div class="flex flex-col items-center text-center md:items-start md:text-left">
+        <img
+          src="https://res.cloudinary.com/dfinqvmue/image/upload/v1789294136/wokpllrrs4ra6owqhc4s.jpg"
+          alt="Jean Mario Paredes Lazaro"
+          onerror="this.replaceWith(Object.assign(document.createElement('div'), {className:'flex h-24 w-24 items-center justify-center rounded-full bg-emerald-400/90 text-2xl font-semibold text-zinc-900 shadow-[0_0_30px_rgba(16,185,129,0.35)]', textContent:'JM'}))"
+          class="h-24 w-24 rounded-full object-cover shadow-[0_0_30px_rgba(16,185,129,0.35)] ring-2 ring-emerald-400/60"
+        />
+        <h2 class="font-display mt-4 text-xl font-semibold text-white">Jean Mario Paredes Lazaro</h2>
+        <p class="mt-1 flex items-center gap-1.5 text-sm text-emerald-400">
+          <i data-lucide="flask-conical" class="h-3.5 w-3.5"></i> QA Tester Junior
+        </p>
+        <p class="mt-3 flex items-center gap-1.5 text-sm text-zinc-400">
+          <i data-lucide="map-pin" class="h-3.5 w-3.5"></i> Huaral, Lima, Perú
+        </p>
+        <div class="mt-4 inline-flex items-center gap-2 self-center rounded-full border border-emerald-400/20 bg-emerald-400/5 px-3 py-1.5 text-xs text-emerald-300 md:self-start">
+          <span class="status-dot h-1.5 w-1.5 rounded-full bg-emerald-400"></span>
+          Disponible para oportunidades junior
+        </div>
+        <div class="mt-5 w-full space-y-2.5">
+          <a href="https://github.com/JeanParedesDev" target="_blank" rel="noreferrer"
+             class="group flex items-center gap-3 rounded-lg px-2 py-1.5 text-sm text-zinc-400 transition-all duration-200 hover:bg-white/5 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-400"
+             aria-label="GitHub: JeanParedesDev">
+            <svg class="h-5 w-5 shrink-0 text-zinc-400 transition-colors group-hover:text-emerald-400" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12 .5a12 12 0 0 0-3.79 23.39c.6.11.82-.26.82-.58v-2.24c-3.34.73-4.04-1.42-4.04-1.42-.55-1.4-1.34-1.77-1.34-1.77-1.09-.75.08-.74.08-.74 1.2.09 1.83 1.23 1.83 1.23 1.07 1.83 2.8 1.3 3.48.99.11-.77.42-1.3.76-1.6-2.67-.3-5.47-1.34-5.47-5.95 0-1.31.47-2.38 1.23-3.22-.12-.3-.53-1.52.12-3.17 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6.01 0c2.29-1.55 3.29-1.23 3.29-1.23.66 1.65.25 2.87.13 3.17.76.84 1.22 1.91 1.22 3.22 0 4.62-2.8 5.64-5.48 5.94.43.37.81 1.1.81 2.22v3.29c0 .32.22.69.83.57A12 12 0 0 0 12 .5Z"/>
+            </svg>
+            <span><span class="text-zinc-500">GitHub</span> · JeanParedesDev</span>
+          </a>
+
+          <a href="https://www.linkedin.com/in/jeanparedes/" target="_blank" rel="noreferrer"
+             class="group flex items-center gap-3 rounded-lg px-2 py-1.5 text-sm text-zinc-400 transition-all duration-200 hover:bg-white/5 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-400"
+             aria-label="LinkedIn: jeanparedes">
+            <svg class="h-5 w-5 shrink-0 text-zinc-400 transition-colors group-hover:text-emerald-400" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M20.45 20.45h-3.56v-5.58c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.44-2.14 2.94v5.68H9.34V8.98h3.42v1.57h.05c.48-.9 1.64-1.85 3.38-1.85 3.62 0 4.29 2.38 4.29 5.47v6.28ZM5.32 7.41a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14ZM3.54 20.45H7.1V8.98H3.54v11.47ZM22.22 0H1.78C.8 0 0 .8 0 1.78v20.44C0 23.2.8 24 1.78 24h20.44c.98 0 1.78-.8 1.78-1.78V1.78C24 .8 23.2 0 22.22 0Z"/>
+            </svg>
+            <span><span class="text-zinc-500">LinkedIn</span> · jeanparedes</span>
+          </a>
+
+          <a href="mailto:mariojean117@gmail.com"
+             class="group flex items-center gap-3 rounded-lg px-2 py-1.5 text-sm text-zinc-400 transition-all duration-200 hover:bg-white/5 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-400"
+             aria-label="Correo: mariojean117@gmail.com">
+            <i data-lucide="mail" class="h-5 w-5 shrink-0 text-zinc-400 transition-colors group-hover:text-emerald-400"></i>
+            <span><span class="text-zinc-500">Correo</span> · mariojean117@gmail.com</span>
+          </a>
+
+          <a href="https://t.me/YutzzMoe" target="_blank" rel="noreferrer"
+             class="group flex items-center gap-3 rounded-lg px-2 py-1.5 text-sm text-zinc-400 transition-all duration-200 hover:bg-white/5 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-400"
+             aria-label="Telegram: @YutzzMoe">
+            <i data-lucide="send" class="h-5 w-5 shrink-0 text-zinc-400 transition-colors group-hover:text-emerald-400"></i>
+            <span><span class="text-zinc-500">Telegram</span> · @YutzzMoe</span>
+          </a>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Content -->
+    <main class="min-w-0 flex-1 rounded-2xl border border-white/10 bg-zinc-900/45 px-5 py-6 shadow-2xl shadow-black/20 backdrop-blur-xl sm:px-8 sm:py-8 lg:px-12 lg:py-10">
+      <nav id="tabs" role="tablist" class="flex flex-wrap gap-1 border-b border-white/10">
+        <button data-tab="about" id="tab-about" aria-controls="tab-content" aria-selected="false" role="tab" class="tab-btn relative px-4 py-3 text-sm font-medium transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-400">Sobre mí</button>
+        <button data-tab="resume" id="tab-resume" aria-controls="tab-content" aria-selected="false" role="tab" class="tab-btn relative px-4 py-3 text-sm font-medium transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-400">Currículum</button>
+        <button data-tab="portfolio" id="tab-portfolio" aria-controls="tab-content" aria-selected="false" role="tab" class="tab-btn relative px-4 py-3 text-sm font-medium transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-400">Portfolio</button>
+        <button data-tab="contact" id="tab-contact" aria-controls="tab-content" aria-selected="false" role="tab" class="tab-btn relative px-4 py-3 text-sm font-medium transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-400">Contacto</button>
+      </nav>
+      <div id="tab-content" class="tab-panel pt-8 max-w-4xl" tabindex="0"></div>
+    </main>
+  </div>
+
+<script>
+// ✏️ Edita aquí tu información. Todo el texto de la página sale de este objeto.
+const content = {
+  about: {
+    headline: "Encuentro errores antes de que lleguen al usuario.",
+    paragraphs: [
+      "Egresado de Ingeniería de Sistemas Computacionales, orientado a Quality Assurance, testing funcional y mejora continua. Estoy construyendo experiencia práctica mediante proyectos web, documentación de pruebas y análisis de calidad.",
+      "También tengo interés en desarrollo web, lo que me ayuda a entender mejor la relación entre interfaz, lógica, APIs y datos — a mirar una aplicación no solo como usuario, sino también desde el punto de vista técnico."
+    ],
+    approach: {
+      label: "Mi enfoque",
+      flow: "Probar → Encontrar → Documentar → Mejorar",
+      detail: "Busco convertir cada prueba en información útil para mejorar el producto."
+    },
+    skills: [
+      { title: "Manual Testing", desc: "Pruebas funcionales, exploratorias, regresión y smoke testing.", level: 3, levelLabel: "En práctica", tags: ["Test Cases","Checklist","Bug Reports"] },
+      { title: "Web Testing", desc: "Validación de interfaces, formularios, navegación y responsive.", level: 3, levelLabel: "En práctica", tags: ["UI","UX","Responsive"] },
+      { title: "API y datos", desc: "Validación de endpoints, respuestas y consistencia de datos.", level: 2, levelLabel: "Aprendiendo", tags: ["Postman","REST","SQL"] },
+      { title: "Herramientas", desc: "Para documentar y organizar el trabajo de pruebas.", level: 3, levelLabel: "En práctica", tags: ["Git","GitHub","Jira"] }
+    ],
+    pipeline: [
+      { title: "Entender", desc: "Reviso requerimientos y criterios de aceptación." },
+      { title: "Diseñar", desc: "Creo escenarios y casos de prueba." },
+      { title: "Ejecutar", desc: "Pruebo caminos positivos, negativos y alternativos." },
+      { title: "Reportar", desc: "Documento defectos con evidencia y pasos reproducibles." },
+      { title: "Verificar", desc: "Realizo retesting y regresión cuando corresponde." }
+    ]
+  },
+  resume: {
+    education: [
+      { title: "Ingeniería de Sistemas Computacionales", place: "Universidad Privada del Norte", detail: "Egresado" }
+    ],
+    experience: [
+      { title: "Prácticas en TI — Soporte y redes", place: "Hospital de Chancay (SBS Hidalgo Atoche López)", detail: "Soporte técnico y mantenimiento de red, con atención directa a médicos y pacientes." }
+    ],
+    tools: ["Postman","MySQL","SQLite","Git / GitHub","Jira","Excel","VS Code"]
+  },
+  projects: [
+    { code: "TC-01", category: "Web App", title: "Testing de aplicación web", status: "En desarrollo", statusType: "progress", description: "Proyecto de práctica para diseñar escenarios, casos de prueba, pruebas negativas, regresión y reportes de defectos sobre una aplicación web.", tags: ["Functional Testing","Exploratory Testing","Bug Reporting"], docNote: "Documentación en preparación" },
+    { code: "TC-02", category: "Sistema · Salud", title: "Sistema web de gestión de citas médicas", status: "Académico", statusType: "academic", description: "Proyecto académico enfocado en un sistema web para la gestión de citas médicas y la optimización del área de admisión hospitalaria.", tags: ["Web System","Requirements","Quality Analysis"], docNote: "Documentación en preparación" },
+    { code: "TC-03", category: "API REST", title: "Pruebas de API REST", status: "Planeado", statusType: "planned", description: "Proyecto planificado para demostrar validación de endpoints, códigos HTTP, datos de respuesta, casos positivos y negativos mediante Postman.", tags: ["Postman","REST API","JSON"], docNote: "Aún no disponible" }
+  ],
+  contact: {
+    email: "mariojean117@gmail.com",
+    github: "https://github.com/JeanParedesDev",
+    linkedin: "https://www.linkedin.com/in/jeanparedes/",
+    telegram: "https://t.me/YutzzMoe"
+  }
+};
+
+const STATUS_STYLES = {
+  progress: "bg-amber-400/10 text-amber-300",
+  academic: "bg-rose-400/10 text-rose-300",
+  planned: "bg-zinc-400/10 text-zinc-300"
+};
+
+function levelDots(level, max = 4) {
+  let dots = "";
+  for (let i = 0; i < max; i++) {
+    dots += `<span class="h-1.5 w-1.5 rounded-full ${i < level ? "bg-emerald-400" : "bg-white/15"}"></span>`;
+  }
+  return `<span class="flex items-center gap-1">${dots}</span>`;
+}
+
+function renderAbout() {
+  const a = content.about;
+  return `
+    <p class="hero-kicker text-[11px] font-semibold uppercase text-emerald-400/80">QUALITY ASSURANCE · PORTFOLIO</p>
+    <h1 class="font-display mt-3 text-3xl font-semibold leading-tight text-white sm:text-4xl lg:text-5xl">${a.headline}</h1>
+    <div class="mt-6 space-y-4 text-zinc-300">
+      ${a.paragraphs.map(p => `<p class="leading-relaxed">${p}</p>`).join("")}
+    </div>
+    <div class="mt-8 rounded-xl border border-emerald-400/20 bg-emerald-400/5 p-5">
+      <p class="text-xs font-medium uppercase tracking-wide text-emerald-400/80">${a.approach.label}</p>
+      <p class="font-display mt-2 text-lg font-semibold text-white">${a.approach.flow}</p>
+      <p class="mt-2 text-sm text-zinc-300">${a.approach.detail}</p>
+    </div>
+    <div class="mt-10 grid gap-4 sm:grid-cols-2">
+      ${a.skills.map(s => `
+        <div class="group rounded-xl border border-white/10 bg-white/[0.025] p-5 shadow-lg shadow-black/10 transition-all duration-300 hover:-translate-y-0.5 hover:border-white/15 hover:bg-white/[0.045]">
+          <div class="flex items-center gap-3"><span class="skill-icon flex h-9 w-9 items-center justify-center rounded-lg border border-emerald-400/15 bg-emerald-400/5 text-emerald-400"><i data-lucide="${s.title === "Manual Testing" ? "test-tube-2" : s.title === "Web Testing" ? "monitor-check" : s.title === "API y datos" ? "braces" : "wrench"}" class="h-4 w-4"></i></span><h2 class="font-display text-sm font-semibold text-white">${s.title}</h2></div>
+          <p class="mt-1.5 text-sm text-zinc-400">${s.desc}</p>
+          <div class="mt-3 flex items-center gap-2">
+            ${levelDots(s.level)}
+            <span class="text-xs text-zinc-500">${s.levelLabel}</span>
+          </div>
+          <div class="mt-3 flex flex-wrap gap-1.5">
+            ${s.tags.map(t => `<span class="rounded-full border border-white/10 px-2.5 py-0.5 text-xs text-zinc-400">${t}</span>`).join("")}
+          </div>
+        </div>
+      `).join("")}
+    </div>
+    <div class="mt-10">
+      <h2 class="font-display text-sm font-semibold text-white">Cómo pienso una prueba</h2>
+      <div class="mt-4 grid gap-4 sm:grid-cols-5">
+        ${a.pipeline.map((step, i) => `
+          <div class="flex gap-3 sm:flex-col sm:gap-2">
+            <span class="font-display flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-emerald-400/40 text-xs text-emerald-400">${i + 1}</span>
+            <div>
+              <p class="text-sm font-medium text-white">${step.title}</p>
+              <p class="mt-0.5 text-xs leading-relaxed text-zinc-400">${step.desc}</p>
+            </div>
+          </div>
+        `).join("")}
+      </div>
+    </div>
+  `;
+}
+
+function renderResume() {
+  const r = content.resume;
+  return `
+    <p class="hero-kicker text-[11px] font-semibold uppercase text-emerald-400/80">TRAYECTORIA</p>
+<h1 class="font-display mt-3 text-3xl font-semibold text-white sm:text-4xl">Currículum</h1>
+    <div class="mt-10">
+      <div class="flex items-center gap-2 text-white">
+        <i data-lucide="graduation-cap" class="h-5 w-5 text-emerald-400"></i>
+        <h2 class="font-display text-sm font-semibold">Educación</h2>
+      </div>
+      <div class="mt-4 border-l-2 border-white/10 pl-5">
+        ${r.education.map(item => `
+          <div class="pb-2">
+            <p class="font-medium text-white">${item.title}</p>
+            <p class="text-sm text-zinc-400">${item.place}</p>
+            <p class="mt-1 text-sm text-zinc-300">${item.detail}</p>
+          </div>
+        `).join("")}
+      </div>
+    </div>
+    <div class="mt-10">
+      <div class="flex items-center gap-2 text-white">
+        <i data-lucide="briefcase" class="h-5 w-5 text-emerald-400"></i>
+        <h2 class="font-display text-sm font-semibold">Experiencia</h2>
+      </div>
+      <div class="mt-4 border-l-2 border-white/10 pl-5">
+        ${r.experience.map(item => `
+          <div class="pb-2">
+            <p class="font-medium text-white">${item.title}</p>
+            <p class="text-sm text-zinc-400">${item.place}</p>
+            <p class="mt-1 text-sm text-zinc-300">${item.detail}</p>
+          </div>
+        `).join("")}
+      </div>
+    </div>
+    <div class="mt-10">
+      <div class="flex items-center gap-2 text-white">
+        <i data-lucide="wrench" class="h-5 w-5 text-emerald-400"></i>
+        <h2 class="font-display text-sm font-semibold">Herramientas</h2>
+      </div>
+      <div class="mt-4 flex flex-wrap gap-2">
+        ${r.tools.map(tool => `<span class="rounded-full border border-white/10 px-3 py-1 text-sm text-zinc-300">${tool}</span>`).join("")}
+      </div>
+    </div>
+  `;
+}
+
+function renderPortfolio() {
+  return `
+    <p class="hero-kicker text-[11px] font-semibold uppercase text-emerald-400/80">PROYECTOS Y PRÁCTICA</p>
+    <h1 class="font-display mt-3 text-3xl font-semibold text-white sm:text-4xl">Portfolio</h1>
+    <p class="mt-4 max-w-2xl leading-relaxed text-zinc-400">Proyectos seleccionados para mostrar cómo aplico análisis, diseño de pruebas, ejecución y documentación de calidad.</p>
+    <div class="mt-10 space-y-6">
+      ${content.projects.map(p => `
+        <div class="project-card group rounded-xl border border-white/10 bg-white/[0.025] p-6 shadow-lg shadow-black/10 transition-all duration-300 hover:-translate-y-1 hover:border-emerald-400/30 hover:bg-white/[0.05]">
+          <div class="flex items-start justify-between gap-4">
+            <div>
+              <p class="font-display text-xs tracking-wide text-emerald-400/70">${p.code} · ${p.category}</p>
+              <h2 class="font-display mt-1 text-lg font-semibold text-white">${p.title}</h2>
+            </div>
+            <span class="shrink-0 rounded-full px-3 py-1 text-xs font-medium ${STATUS_STYLES[p.statusType]}">${p.status}</span>
+          </div>
+          <p class="mt-3 text-sm leading-relaxed text-zinc-300">${p.description}</p>
+          <div class="mt-4 flex flex-wrap gap-1.5">
+            ${p.tags.map(t => `<span class="rounded-full border border-white/10 px-2.5 py-0.5 text-xs text-zinc-400">${t}</span>`).join("")}
+          </div>
+          <div class="mt-4 flex items-center gap-2 border-t border-white/10 pt-4">
+            <i data-lucide="bug" class="h-3.5 w-3.5 text-zinc-500"></i>
+            <p class="text-xs text-zinc-500">${p.docNote}</p>
+          </div>
+        </div>
+      `).join("")}
+    </div>
+  `;
+}
+
+function renderContact() {
+  const c = content.contact;
+  const links = [
+    { icon: "mail", label: c.email, href: `mailto:${c.email}` },
+    { icon: "github", label: "GitHub", href: c.github },
+    { icon: "linkedin", label: "LinkedIn", href: c.linkedin },
+    { icon: "send", label: "Telegram", href: c.telegram }
+  ];
+  return `
+    <p class="hero-kicker text-[11px] font-semibold uppercase text-emerald-400/80">HABLEMOS</p>
+<h1 class="font-display mt-3 text-3xl font-semibold text-white sm:text-4xl">Contacto</h1>
+    <p class="mt-6 leading-relaxed text-zinc-300">Estoy abierto a oportunidades junior, prácticas y proyectos donde pueda seguir creciendo en QA.</p>
+    <div class="mt-8 space-y-3">
+      ${links.map(l => `
+        <a href="${l.href}" target="_blank" rel="noreferrer" class="flex items-center gap-3 rounded-md border border-white/10 bg-white/[0.03] px-4 py-3 text-sm text-zinc-200 transition-all duration-200 hover:-translate-y-0.5 hover:border-emerald-400/40 hover:text-emerald-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-400">
+          <i data-lucide="${l.icon}" class="h-4 w-4"></i>${l.label}
+        </a>
+      `).join("")}
+    </div>
+  `;
+}
+
+const RENDERERS = { about: renderAbout, resume: renderResume, portfolio: renderPortfolio, contact: renderContact };
+
+function setActiveTab(tabId) {
+  document.querySelectorAll(".tab-btn").forEach(btn => {
+    const isActive = btn.dataset.tab === tabId;
+    btn.classList.toggle("text-white", isActive);
+    btn.classList.toggle("text-zinc-500", !isActive);
+    btn.querySelector(".tab-underline")?.remove();
+    if (isActive) {
+      const underline = document.createElement("span");
+      underline.className = "tab-underline absolute inset-x-4 -bottom-px h-0.5 bg-emerald-400";
+      btn.appendChild(underline);
+    }
+  });
+  const panel = document.getElementById("tab-content");
+  panel.classList.remove("tab-panel");
+  void panel.offsetWidth; // reinicia la animación
+  panel.classList.add("tab-panel");
+  panel.innerHTML = RENDERERS[tabId]();
+  if (window.lucide) lucide.createIcons();
+}
+
+document.querySelectorAll(".tab-btn").forEach(btn => {
+  btn.addEventListener("click", () => setActiveTab(btn.dataset.tab));
+  btn.addEventListener("keydown", (event) => {
+    if (event.key !== "ArrowRight" && event.key !== "ArrowLeft") return;
+    const buttons = [...document.querySelectorAll(".tab-btn")];
+    const index = buttons.indexOf(btn);
+    const next = event.key === "ArrowRight"
+      ? buttons[(index + 1) % buttons.length]
+      : buttons[(index - 1 + buttons.length) % buttons.length];
+    next.focus();
+    setActiveTab(next.dataset.tab);
+  });
+  btn.classList.add("text-zinc-500", "hover:text-zinc-300");
+});
+setActiveTab("about");
+if (window.lucide) lucide.createIcons();
+
+requestAnimationFrame(() => {
+  const app = document.getElementById("app");
+  app.classList.remove("opacity-0", "translate-y-3");
+  app.classList.add("opacity-100", "translate-y-0");
+});
+
+// Fondo animado: red de nodos a la deriva, conectados cuando están cerca.
+(function animateBackground() {
+  const canvas = document.getElementById("bg-canvas");
+  const ctx = canvas.getContext("2d");
+  const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let particles = [];
+  let dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+  function resize() {
+    canvas.width = canvas.offsetWidth * dpr;
+    canvas.height = canvas.offsetHeight * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+  function seed() {
+    const w = canvas.offsetWidth, h = canvas.offsetHeight;
+    const count = Math.min(55, Math.floor((w * h) / 24000));
+    particles = Array.from({ length: count }, (_, i) => ({
+      x: Math.random() * w,
+      y: Math.random() * h,
+      vx: prefersReduced ? 0 : (Math.random() - 0.5) * 0.22,
+      vy: prefersReduced ? 0 : (Math.random() - 0.5) * 0.22,
+      r: Math.random() * 1.4 + 0.8,
+      hue: i % 3 === 0 ? "244,63,94" : "16,185,129"
+    }));
+  }
+  function step() {
+    const w = canvas.offsetWidth, h = canvas.offsetHeight;
+    ctx.clearRect(0, 0, w, h);
+    for (const p of particles) {
+      p.x += p.vx; p.y += p.vy;
+      if (p.x < 0 || p.x > w) p.vx *= -1;
+      if (p.y < 0 || p.y > h) p.vy *= -1;
+    }
+    for (let i = 0; i < particles.length; i++) {
+      for (let j = i + 1; j < particles.length; j++) {
+        const a = particles[i], b = particles[j];
+        const dist = Math.hypot(a.x - b.x, a.y - b.y);
+        if (dist < 140) {
+          ctx.strokeStyle = `rgba(16,185,129,${0.14 * (1 - dist / 140)})`;
+          ctx.lineWidth = 1;
+          ctx.beginPath();
+          ctx.moveTo(a.x, a.y);
+          ctx.lineTo(b.x, b.y);
+          ctx.stroke();
+        }
+      }
+    }
+    for (const p of particles) {
+      ctx.beginPath();
+      ctx.fillStyle = `rgba(${p.hue},0.7)`;
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fill();
+    }
+  }
+  let rafId;
+  function loop() { step(); rafId = requestAnimationFrame(loop); }
+  resize(); seed();
+  if (prefersReduced) step(); else loop();
+  window.addEventListener("resize", () => { resize(); seed(); if (prefersReduced) step(); });
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) cancelAnimationFrame(rafId);
+    else if (!prefersReduced) loop();
+  });
+})();
+</script>
+</body>
+</html>
